@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TheFeriWala</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="regular_font">fonts/celias.otf</string>
+    <string name="black_font">fonts/CeliasBlack.otf</string>
+    <string name="black_italic_font">fonts/CeliasBlackItalic.otf</string>
+    <string name="bold_font">fonts/CeliasBold.otf</string>
+    <string name="light_font">fonts/CeliasLight.otf</string>
+    <string name="medium_font">fonts/CeliasMedium.otf</string>
+    <string name="italic_font">fonts/CeliasRegularItalic.otf</string>
+    <string name="thin_font">fonts/celiasthin.otf</string>
 </resources>
