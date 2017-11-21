@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private ExpandableListAdapter expandableListAdapter;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
-    private CirclePageIndicator indicator;
-    private ViewPager viewPager;
-    private RecyclerView rv_TodaysDeals;
 
 
     @Override
@@ -72,37 +69,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initWidgit() {
-        indicator = (CirclePageIndicator) findViewById(R.id.indicator);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        viewPager.setClipToPadding(false);
-        viewPager.setPageMargin(10);
-        viewPager.setCurrentItem(1);
-        rv_TodaysDeals = (RecyclerView)findViewById(R.id.rv_TodaysDeals);
-        rv_TodaysDeals.setHasFixedSize(true);
-        rv_TodaysDeals.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
 
 
         expandableClickListener();
         getCategorySubCategory();
-        getBannerSlider();
-        setValueInTodaysDeal();
+
        // getTodaysDeal();
     }
 
-    private void setValueInTodaysDeal() {
-
-        ArrayList<String> todaydealList = new ArrayList<>();
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/n79imvy3x0wqdoc20170831121747.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/ij7s81ctuxf5ehf20170831193619.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/3ykfztq5vamnfmi20170831193618.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/livoknhf0exp2au20170831121746.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/9h4snrffe5cxdyk20170831193618.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/jotc4aong2kyknm20170831122202.jpg");
-        TodaysDealAdapter adapter = new TodaysDealAdapter(MainActivity.this,todaydealList);
-        rv_TodaysDeals.setAdapter(adapter);
-    }
 
 
     private void expandableClickListener() {
@@ -170,31 +146,6 @@ public class MainActivity extends AppCompatActivity {
         web.execute(WebServices.CATEGORY);
     }
 
-    private void getBannerSlider() {
-        Download_web web = new Download_web(MainActivity.this, new OnTaskCompleted() {
-            @Override
-            public void onTaskCompleted(String response) {
-
-                Gson gson = new Gson();
-                BannerSlider bannerSlider = gson.fromJson(response,BannerSlider.class);
-                if (bannerSlider.getStatus().equals("true"))
-                {
-                    ImageSliderAdapter imageSliderAdapter = new ImageSliderAdapter(MainActivity.this, bannerSlider.getData());
-                    viewPager.setAdapter(imageSliderAdapter);
-                    indicator.setViewPager(viewPager);
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, ""+bannerSlider.getMsg(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        web.setReqType("get");
-       // StartAsyncTaskInParallel(web,WebServices.GETSLIDER);
-        web.execute(WebServices.GETSLIDER);
-
-    }
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void StartAsyncTaskInParallel(Download_web web, String getslider) {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
