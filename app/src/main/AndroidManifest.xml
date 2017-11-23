@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.ViewAllWithNamePrice"
+            android:theme="@style/AppTheme.NoActionBar"/>
        <!-- <meta-data
             android:name="io.fabric.ApiKey"
             android:value="185cd65e35579c876af0ada8ca5fcc40ac8cded2" />-->

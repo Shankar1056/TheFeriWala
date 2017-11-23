@@ -9,6 +9,8 @@ import org.apache.http.NameValuePair;
 
 import java.util.ArrayList;
 
+import apextechies.theferiwala.interfaces.OnTaskCompleted;
+
 
 public class Download_web extends AsyncTask<String, Integer, String>
     {

@@ -1,4 +1,4 @@
-package apextechies.theferiwala.utilz;
+package apextechies.theferiwala.interfaces;
 
 public interface OnTaskCompleted {
     void onTaskCompleted(String response);

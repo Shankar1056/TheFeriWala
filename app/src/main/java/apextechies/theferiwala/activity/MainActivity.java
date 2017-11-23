@@ -5,26 +5,22 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
-import com.viewpagerindicator.CirclePageIndicator;
 
-import apextechies.theferiwala.adapter.TodaysDealAdapter;
 import apextechies.theferiwala.fragment.HomeFragment;
+import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,13 +28,10 @@ import java.util.List;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.adapter.CustomExpandableListAdapter;
-import apextechies.theferiwala.adapter.ImageSliderAdapter;
-import apextechies.theferiwala.model.BannerSlider;
 import apextechies.theferiwala.model.CategoryModel;
 import apextechies.theferiwala.model.CategorySubCategoryModel;
 import apextechies.theferiwala.model.SubCategoryModel;
 import apextechies.theferiwala.utilz.Download_web;
-import apextechies.theferiwala.utilz.OnTaskCompleted;
 import apextechies.theferiwala.utilz.WebServices;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
+        TextView toolbartext = (TextView)findViewById(R.id.toolbartext);
+        toolbartext.setText("TheFeriWala");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -1,5 +1,6 @@
 package apextechies.theferiwala.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,17 +19,18 @@ import com.viewpagerindicator.CirclePageIndicator;
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
+import apextechies.theferiwala.activity.ViewAllWithNamePrice;
 import apextechies.theferiwala.adapter.BestOfferAdapter;
 import apextechies.theferiwala.adapter.ImageSliderAdapter;
 import apextechies.theferiwala.adapter.MensAdapter;
 import apextechies.theferiwala.adapter.NewArrivals;
 import apextechies.theferiwala.adapter.TodaysDealAdapter;
 import apextechies.theferiwala.adapter.TrendingProductAdapter;
+import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import apextechies.theferiwala.model.BannerSlider;
 import apextechies.theferiwala.model.DataListModel;
 import apextechies.theferiwala.model.ViewAllModel;
 import apextechies.theferiwala.utilz.Download_web;
-import apextechies.theferiwala.utilz.OnTaskCompleted;
 import apextechies.theferiwala.utilz.Utility;
 import apextechies.theferiwala.utilz.WebServices;
 
@@ -36,7 +38,7 @@ import apextechies.theferiwala.utilz.WebServices;
  * Created by shankar on 21/11/17.
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
     private CirclePageIndicator indicator;
     private ViewPager viewPager;
     private RecyclerView BO_RecyclerView,NA_RecyclerView,M_RecyclerView,TD_RecyclerView,TP_RecyclerView;
@@ -45,6 +47,7 @@ public class HomeFragment extends Fragment {
     private TextView M_Text,M_ViewAll;
     private TextView TD_Text,TD_ViewAll;
     private TextView TP_Text,TP_ViewAll;
+    private ArrayList<DataListModel> list = new ArrayList<>();
 
 
     @Nullable
@@ -59,10 +62,18 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initWidgit(view);
+        clickListener();
         getBannerSlider();
         getAllHomePageData();
     }
 
+    private void clickListener() {
+        BO_ViewAll.setOnClickListener(this);
+        NA_ViewAll.setOnClickListener(this);
+        M_ViewAll.setOnClickListener(this);
+        TD_ViewAll.setOnClickListener(this);
+        TP_ViewAll.setOnClickListener(this);
+    }
 
 
     private void initWidgit(View view) {
@@ -141,6 +152,7 @@ public class HomeFragment extends Fragment {
                 if (viewAllModel.getStatus().equals("true"))
                 {
                     setvalueInTextView(viewAllModel.getData());
+                    list = viewAllModel.getData();
                 }
                 else
                 {
@@ -183,6 +195,16 @@ public class HomeFragment extends Fragment {
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.NA_ViewAll:
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(1).getSubcategories()));
+                break;
         }
     }
 }
