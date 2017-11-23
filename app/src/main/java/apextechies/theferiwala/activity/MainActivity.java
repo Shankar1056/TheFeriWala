@@ -3,6 +3,8 @@ package apextechies.theferiwala.activity;
 import android.annotation.TargetApi;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import apextechies.theferiwala.adapter.TodaysDealAdapter;
+import apextechies.theferiwala.fragment.HomeFragment;
 import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,8 +80,15 @@ public class MainActivity extends AppCompatActivity {
         getCategorySubCategory();
 
        // getTodaysDeal();
+        gotoHomeFragment();
     }
 
+    private void gotoHomeFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.commit();
+    }
 
 
     private void expandableClickListener() {

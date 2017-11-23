@@ -5,9 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -18,15 +16,15 @@ import apextechies.theferiwala.common.PreferenceHelper;
 import apextechies.theferiwala.model.ViewAllSubCat;
 
 /**
- * Created by shankar on 16/11/17.
+ * Created by shankar on 23/11/17.
  */
 
-public class TodaysDealAdapter extends RecyclerView.Adapter<TodaysDealAdapter.ViewHolder> {
+public class TrendingProductAdapter extends RecyclerView.Adapter<TrendingProductAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<ViewAllSubCat> imageList;
 
-    public TodaysDealAdapter(Context context, ArrayList<ViewAllSubCat> imageList) {
+    public TrendingProductAdapter(Context context, ArrayList<ViewAllSubCat> imageList) {
         this.context = context;
         this.imageList = imageList;
     }
@@ -64,3 +62,4 @@ public class TodaysDealAdapter extends RecyclerView.Adapter<TodaysDealAdapter.Vi
         }
     }
 }
+

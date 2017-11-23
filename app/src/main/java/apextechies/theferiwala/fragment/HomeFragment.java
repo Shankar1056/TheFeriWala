@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,11 +18,18 @@ import com.viewpagerindicator.CirclePageIndicator;
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
+import apextechies.theferiwala.adapter.BestOfferAdapter;
 import apextechies.theferiwala.adapter.ImageSliderAdapter;
+import apextechies.theferiwala.adapter.MensAdapter;
+import apextechies.theferiwala.adapter.NewArrivals;
 import apextechies.theferiwala.adapter.TodaysDealAdapter;
+import apextechies.theferiwala.adapter.TrendingProductAdapter;
 import apextechies.theferiwala.model.BannerSlider;
+import apextechies.theferiwala.model.DataListModel;
+import apextechies.theferiwala.model.ViewAllModel;
 import apextechies.theferiwala.utilz.Download_web;
 import apextechies.theferiwala.utilz.OnTaskCompleted;
+import apextechies.theferiwala.utilz.Utility;
 import apextechies.theferiwala.utilz.WebServices;
 
 /**
@@ -31,7 +39,12 @@ import apextechies.theferiwala.utilz.WebServices;
 public class HomeFragment extends Fragment {
     private CirclePageIndicator indicator;
     private ViewPager viewPager;
-    private RecyclerView rv_TodaysDeals;
+    private RecyclerView BO_RecyclerView,NA_RecyclerView,M_RecyclerView,TD_RecyclerView,TP_RecyclerView;
+    private TextView BO_Text,BO_ViewAll;
+    private TextView NA_Text,NA_ViewAll;
+    private TextView M_Text,M_ViewAll;
+    private TextView TD_Text,TD_ViewAll;
+    private TextView TP_Text,TP_ViewAll;
 
 
     @Nullable
@@ -47,8 +60,10 @@ public class HomeFragment extends Fragment {
 
         initWidgit(view);
         getBannerSlider();
-        setValueInTodaysDeal();
+        getAllHomePageData();
     }
+
+
 
     private void initWidgit(View view) {
         indicator = (CirclePageIndicator)view.findViewById(R.id.indicator);
@@ -56,23 +71,40 @@ public class HomeFragment extends Fragment {
         viewPager.setClipToPadding(false);
         viewPager.setPageMargin(10);
         viewPager.setCurrentItem(1);
-        rv_TodaysDeals = (RecyclerView)view.findViewById(R.id.rv_TodaysDeals);
-        rv_TodaysDeals.setHasFixedSize(true);
-        rv_TodaysDeals.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        BO_Text = (TextView)view.findViewById(R.id.BO_Text);
+        BO_ViewAll = (TextView)view.findViewById(R.id.BO_ViewAll);
+        NA_Text = (TextView)view.findViewById(R.id.NA_Text);
+        NA_ViewAll = (TextView)view.findViewById(R.id.NA_ViewAll);
+        M_Text = (TextView)view.findViewById(R.id.M_Text);
+        M_ViewAll = (TextView)view.findViewById(R.id.M_ViewAll);
+        TD_Text = (TextView)view.findViewById(R.id.TD_Text);
+        TD_ViewAll = (TextView)view.findViewById(R.id.TD_ViewAll);
+        TP_Text = (TextView)view.findViewById(R.id.TP_Text);
+        TP_ViewAll = (TextView)view.findViewById(R.id.TP_ViewAll);
+
+        BO_RecyclerView = (RecyclerView)view.findViewById(R.id.BO_RecyclerView);
+        BO_RecyclerView.setHasFixedSize(true);
+        BO_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        NA_RecyclerView = (RecyclerView)view.findViewById(R.id.NA_RecyclerView);
+        NA_RecyclerView.setHasFixedSize(true);
+        NA_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        M_RecyclerView = (RecyclerView)view.findViewById(R.id.M_RecyclerView);
+        M_RecyclerView.setHasFixedSize(true);
+        M_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        TD_RecyclerView = (RecyclerView)view.findViewById(R.id.TD_RecyclerView);
+        TD_RecyclerView.setHasFixedSize(true);
+        TD_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        TP_RecyclerView = (RecyclerView)view.findViewById(R.id.TP_RecyclerView);
+        TP_RecyclerView.setHasFixedSize(true);
+        TP_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
     }
-    private void setValueInTodaysDeal() {
 
-        ArrayList<String> todaydealList = new ArrayList<>();
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/n79imvy3x0wqdoc20170831121747.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/ij7s81ctuxf5ehf20170831193619.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/3ykfztq5vamnfmi20170831193618.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/livoknhf0exp2au20170831121746.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/9h4snrffe5cxdyk20170831193618.jpg");
-        todaydealList.add("http://theferiwala.com/jk-images/pagedesign_image/jotc4aong2kyknm20170831122202.jpg");
-        TodaysDealAdapter adapter = new TodaysDealAdapter(getActivity(),todaydealList);
-        rv_TodaysDeals.setAdapter(adapter);
-    }
 
     private void getBannerSlider() {
         Download_web web = new Download_web(getActivity(), new OnTaskCompleted() {
@@ -95,8 +127,62 @@ public class HomeFragment extends Fragment {
         });
 
         web.setReqType("get");
-        // StartAsyncTaskInParallel(web,WebServices.GETSLIDER);
         web.execute(WebServices.GETSLIDER);
 
+    }
+    private void getAllHomePageData() {
+        Utility.showDailog(getActivity(),getResources().getString(R.string.pleasewait));
+        Download_web web = new Download_web(getActivity(), new OnTaskCompleted() {
+            @Override
+            public void onTaskCompleted(String response) {
+             Utility.closeDialog();
+                Gson gson = new Gson();
+                ViewAllModel viewAllModel = gson.fromJson(response,ViewAllModel.class);
+                if (viewAllModel.getStatus().equals("true"))
+                {
+                    setvalueInTextView(viewAllModel.getData());
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), ""+viewAllModel.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        web.setReqType("get");
+        web.execute(WebServices.GETHOMEPRODUCT);
+    }
+
+    private void setvalueInTextView(ArrayList<DataListModel> data) {
+        try {
+            if (data.size() > 0) {
+                BO_Text.setText(data.get(0).getCname());
+                BestOfferAdapter adapter = new BestOfferAdapter(getActivity(), data.get(0).getSubcategories());
+                BO_RecyclerView.setAdapter(adapter);
+            }
+            if (data.size() > 1) {
+                NA_Text.setText(data.get(1).getCname());
+                NewArrivals adapter = new NewArrivals(getActivity(), data.get(1).getSubcategories());
+                NA_RecyclerView.setAdapter(adapter);
+            }
+            if (data.size() > 2) {
+                M_Text.setText(data.get(2).getCname());
+                MensAdapter adapter = new MensAdapter(getActivity(), data.get(2).getSubcategories());
+                M_RecyclerView.setAdapter(adapter);
+            }
+            if (data.size() > 3) {
+                TD_Text.setText(data.get(3).getCname());
+                TodaysDealAdapter adapter = new TodaysDealAdapter(getActivity(), data.get(3).getSubcategories());
+                TD_RecyclerView.setAdapter(adapter);
+            }
+            if (data.size() > 4) {
+                TP_Text.setText(data.get(4).getCname());
+                TrendingProductAdapter adapter = new TrendingProductAdapter(getActivity(), data.get(4).getSubcategories());
+                TP_RecyclerView.setAdapter(adapter);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -13,4 +13,6 @@
     <string name="italic_font">fonts/CeliasRegularItalic.otf</string>
     <string name="thin_font">fonts/celiasthin.otf</string>
     <string name="todaysdeal">Todays Deal</string>
+    <string name="viewall">View All</string>
+    <string name="pleasewait">Please wait...</string>
 </resources>
