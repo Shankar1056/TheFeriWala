@@ -12,6 +12,7 @@ public class WebServices {
 	public static final String CATEGORY = BASE_URL+"get_categories";
 	public static final String GETSLIDER = BASE_URL+"get_slider";
 	public static final String GETHOMEPRODUCT = BASE_URL+"get_homeProdct";
+	public static final String GETPRODUCTBYID = BASE_URL+"get_ProdctbyCatId";
 
 	
 	

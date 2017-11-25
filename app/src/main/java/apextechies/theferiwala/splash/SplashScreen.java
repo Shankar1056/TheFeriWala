@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.firebase.digitsmigrationhelpers.AuthMigrator;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
@@ -17,12 +18,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.JsonParser;
 
 import java.util.Arrays;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.activity.MainActivity;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by shankar on 16/11/17.
@@ -37,6 +38,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.splash);
         new Handler().postDelayed(new Runnable() {
 

@@ -1,6 +1,7 @@
 package apextechies.theferiwala.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,14 @@ public class ViewAllPriceNameAdapter extends RecyclerView.Adapter<ViewAllPriceNa
         Picasso.with(context).load(PreferenceHelper.IMAGE_URL+imageList.get(position).getImage()).into(holder.image);
         holder.oldprice.setText(imageList.get(position).getPrice());
         holder.currentprice.setText(imageList.get(position).getDis_price());
+        holder.productName.setText(imageList.get(position).getPname());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPosition.pos(position);
+            }
+        });
     }
 
     @Override
@@ -60,13 +69,15 @@ public class ViewAllPriceNameAdapter extends RecyclerView.Adapter<ViewAllPriceNa
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView image;
-        private TextView oldprice,currentprice;
+        private TextView oldprice,currentprice,productName;
 
         public ViewHolder(View itemView) {
             super(itemView);
             image =(ImageView) itemView.findViewById(R.id.image);
             oldprice =(TextView) itemView.findViewById(R.id.oldprice);
             currentprice =(TextView) itemView.findViewById(R.id.currentprice);
+            productName =(TextView) itemView.findViewById(R.id.productName);
+            oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         }
     }

@@ -94,9 +94,9 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
         if (isExpanded) {
-            updouwnimage.setImageResource(R.mipmap.ic_launcher);
+            updouwnimage.setImageResource(R.mipmap.downarrow);
         } else {
-            updouwnimage.setImageResource(R.mipmap.ic_launcher_round);
+            updouwnimage.setImageResource(R.mipmap.downarrow);
         }
 
         return convertView;

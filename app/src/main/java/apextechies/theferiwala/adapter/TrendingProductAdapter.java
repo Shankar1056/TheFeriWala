@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.common.PreferenceHelper;
+import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.model.ViewAllSubCat;
 
 /**
@@ -23,10 +24,12 @@ public class TrendingProductAdapter extends RecyclerView.Adapter<TrendingProduct
 
     private Context context;
     private ArrayList<ViewAllSubCat> imageList;
+    private ClickPosition clickPosition;
 
-    public TrendingProductAdapter(Context context, ArrayList<ViewAllSubCat> imageList) {
+    public TrendingProductAdapter(Context context, ArrayList<ViewAllSubCat> imageList, ClickPosition clickPosition) {
         this.context = context;
         this.imageList = imageList;
+        this.clickPosition = clickPosition;
     }
 
     @Override
@@ -43,6 +46,12 @@ public class TrendingProductAdapter extends RecyclerView.Adapter<TrendingProduct
 
 
         Picasso.with(context).load(PreferenceHelper.IMAGE_URL+imageList.get(position).getImage()).into(holder.todaysdealImageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPosition.pos(position);
+            }
+        });
     }
 
     @Override

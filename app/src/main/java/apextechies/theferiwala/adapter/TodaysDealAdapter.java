@@ -5,9 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,6 +13,7 @@ import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.common.PreferenceHelper;
+import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.model.ViewAllSubCat;
 
 /**
@@ -25,10 +24,12 @@ public class TodaysDealAdapter extends RecyclerView.Adapter<TodaysDealAdapter.Vi
 
     private Context context;
     private ArrayList<ViewAllSubCat> imageList;
+    private ClickPosition clickPosition;
 
-    public TodaysDealAdapter(Context context, ArrayList<ViewAllSubCat> imageList) {
+    public TodaysDealAdapter(Context context, ArrayList<ViewAllSubCat> imageList, ClickPosition clickPosition) {
         this.context = context;
         this.imageList = imageList;
+        this.clickPosition = clickPosition;
     }
 
     @Override
@@ -45,6 +46,12 @@ public class TodaysDealAdapter extends RecyclerView.Adapter<TodaysDealAdapter.Vi
 
 
         Picasso.with(context).load(PreferenceHelper.IMAGE_URL+imageList.get(position).getImage()).into(holder.todaysdealImageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPosition.pos(position);
+            }
+        });
     }
 
     @Override

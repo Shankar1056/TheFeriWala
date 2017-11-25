@@ -19,6 +19,7 @@ import com.viewpagerindicator.CirclePageIndicator;
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
+import apextechies.theferiwala.activity.ProductDescription;
 import apextechies.theferiwala.activity.ViewAllWithNamePrice;
 import apextechies.theferiwala.adapter.BestOfferAdapter;
 import apextechies.theferiwala.adapter.ImageSliderAdapter;
@@ -26,6 +27,7 @@ import apextechies.theferiwala.adapter.MensAdapter;
 import apextechies.theferiwala.adapter.NewArrivals;
 import apextechies.theferiwala.adapter.TodaysDealAdapter;
 import apextechies.theferiwala.adapter.TrendingProductAdapter;
+import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import apextechies.theferiwala.model.BannerSlider;
 import apextechies.theferiwala.model.DataListModel;
@@ -66,6 +68,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         getBannerSlider();
         getAllHomePageData();
     }
+
 
     private void clickListener() {
         BO_ViewAll.setOnClickListener(this);
@@ -168,27 +171,63 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         try {
             if (data.size() > 0) {
                 BO_Text.setText(data.get(0).getCname());
-                BestOfferAdapter adapter = new BestOfferAdapter(getActivity(), data.get(0).getSubcategories());
+                BestOfferAdapter adapter = new BestOfferAdapter(getActivity(), data.get(0).getSubcategories(), new ClickPosition() {
+                    @Override
+                    public void pos(int position) {
+                        startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(0).getSubcategories()).putExtra("pos",position)
+                                .putExtra("from", "viewall"));
+
+                    }
+                });
                 BO_RecyclerView.setAdapter(adapter);
             }
             if (data.size() > 1) {
                 NA_Text.setText(data.get(1).getCname());
-                NewArrivals adapter = new NewArrivals(getActivity(), data.get(1).getSubcategories());
+                NewArrivals adapter = new NewArrivals(getActivity(), data.get(1).getSubcategories(), new ClickPosition() {
+                    @Override
+                    public void pos(int position) {
+                        startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(1).getSubcategories()).putExtra("pos",position)
+                                .putExtra("from", "viewall"));
+
+                    }
+                });
                 NA_RecyclerView.setAdapter(adapter);
             }
             if (data.size() > 2) {
                 M_Text.setText(data.get(2).getCname());
-                MensAdapter adapter = new MensAdapter(getActivity(), data.get(2).getSubcategories());
+                MensAdapter adapter = new MensAdapter(getActivity(), data.get(2).getSubcategories(), new ClickPosition() {
+                    @Override
+                    public void pos(int position) {
+                        startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(2).getSubcategories()).putExtra("pos",position)
+                                .putExtra("from", "viewall"));
+
+                    }
+                });
                 M_RecyclerView.setAdapter(adapter);
             }
             if (data.size() > 3) {
                 TD_Text.setText(data.get(3).getCname());
-                TodaysDealAdapter adapter = new TodaysDealAdapter(getActivity(), data.get(3).getSubcategories());
+                TodaysDealAdapter adapter = new TodaysDealAdapter(getActivity(), data.get(3).getSubcategories(), new ClickPosition() {
+                    @Override
+                    public void pos(int position) {
+                        startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(3).getSubcategories()).putExtra("pos",position)
+                                .putExtra("from", "viewall"));
+
+                    }
+                });
                 TD_RecyclerView.setAdapter(adapter);
             }
             if (data.size() > 4) {
                 TP_Text.setText(data.get(4).getCname());
-                TrendingProductAdapter adapter = new TrendingProductAdapter(getActivity(), data.get(4).getSubcategories());
+                TrendingProductAdapter adapter = new TrendingProductAdapter(getActivity(), data.get(4).getSubcategories(), new ClickPosition() {
+                    @Override
+                    public void pos(int position) {
+                        startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(4).getSubcategories()).putExtra("pos",position)
+                                .putExtra("from", "viewall"));
+
+
+                    }
+                });
                 TP_RecyclerView.setAdapter(adapter);
             }
         }
@@ -202,8 +241,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId())
         {
+            case R.id.BO_ViewAll:
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(0).getSubcategories()).putExtra("name",list.get(0).getCname()));
+                break;
             case R.id.NA_ViewAll:
-                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(1).getSubcategories()));
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(1).getSubcategories()).putExtra("name",list.get(1).getCname()));
+                break;
+            case R.id.M_ViewAll:
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(2).getSubcategories()).putExtra("name",list.get(2).getCname()));
+                break;
+            case R.id.TD_ViewAll:
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(3).getSubcategories()).putExtra("name",list.get(3).getCname()));
+                break;
+            case R.id.TP_ViewAll:
+                startActivity(new Intent(getActivity(), ViewAllWithNamePrice.class).putParcelableArrayListExtra("list",list.get(4).getSubcategories()).putExtra("name",list.get(4).getCname()));
                 break;
         }
     }
