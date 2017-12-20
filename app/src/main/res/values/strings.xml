@@ -17,4 +17,13 @@
     <string name="pleasewait">Please wait...</string>
     <string name="addtocart">Add to cart</string>
     <string name="gotocart">Go to cart</string>
+    <string name="hint_email">Enter Email Id</string>
+    <string name="hint_password">Enter password</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_phone">Enter Phone number</string>
+    <string name="forgotpassword">Forgot Password?</string>
+    <string name="donthaveaccount">Do\'t have an account?</string>
+    <string name="signup">Sign Up</string>
+    <string name="areadyaccount">Already have an account?</string>
+    <string name="login">Login</string>
 </resources>

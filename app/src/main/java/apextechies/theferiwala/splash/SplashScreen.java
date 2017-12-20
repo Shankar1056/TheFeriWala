@@ -23,6 +23,7 @@ import java.util.Arrays;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.activity.MainActivity;
+import apextechies.theferiwala.login.LoginActivity;
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -45,7 +46,9 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                checksession();
+                //checksession();
+                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
+                finish();
 
             }
         }, 3000);
