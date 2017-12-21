@@ -2,7 +2,6 @@ package apextechies.theferiwala.utilz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -26,10 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
-import apextechies.theferiwala.R;
 
 
 public class Utility {
@@ -263,7 +259,7 @@ public class Utility {
 	
 	public static void showDailog(Context c, String msg) {
 		dialog = new ProgressDialog(c);
-		dialog.setCanceledOnTouchOutside(false);
+		dialog.setCanceledOnTouchOutside(true);
 		dialog.setMessage(msg);
 		dialog.show();
 	}
@@ -282,52 +278,7 @@ public class Utility {
 	
 
 	
-	public static Typeface font(Context context, String fonttype) {
-		 Typeface typeface = null;
-		if (fonttype.equalsIgnoreCase("black"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.black_font));
-		}
-		else if (fonttype.equalsIgnoreCase("regular"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.regular_font));
-		}
-		else if (fonttype.equalsIgnoreCase("medium"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.medium_font));
-		}
-		else if (fonttype.equalsIgnoreCase("bold"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.bold_font));
-		}
-		else if (fonttype.equalsIgnoreCase("blackitalic"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.black_italic_font));
-		}
-		
-		else if (fonttype.equalsIgnoreCase("light"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.light_font));
-		}
-		else if (fonttype.equalsIgnoreCase("italic"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.italic_font));
-		}
-		else if (fonttype.equalsIgnoreCase("thin"))
-		{
-			typeface = Typeface.createFromAsset(context.getAssets(),
-			    context.getResources().getString(R.string.thin_font));
-		}
-		return typeface;
-	}
-	
+
 	public static String getUniqueImageName(){
 		//will generate a random num
 		//between 15-10000

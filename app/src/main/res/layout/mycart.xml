@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toptool"
+        layout="@layout/toolbar"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_mycart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toptool"
+        android:layout_above="@+id/botomlayout">
+
+    </android.support.v7.widget.RecyclerView>
+<RelativeLayout
+    android:id="@+id/botomlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/margin_15"
+    android:layout_marginRight="@dimen/margin_15">
+
+    <TextView
+        android:id="@+id/totlpayble"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        fontPath="@string/bold_font"
+        tools:ignore="MissingPrefix"
+        android:gravity="center"
+        android:textSize="@dimen/margin_15"
+        android:text="Total Payable : "
+        android:textColor="@color/text_app_blue"/>
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        fontPath="@string/bold_font"
+        tools:ignore="MissingPrefix"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/margin_15"
+        android:text=""
+        android:textColor="@color/text_app_blue"/>
+
+    <LinearLayout
+        android:id="@+id/proceedtopay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_50"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_below="@+id/totlpayble"
+        android:layout_marginBottom="@dimen/margin_10">
+        <TextView
+            android:id="@+id/addtocarttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/proceedtopay"
+            android:textSize="@dimen/text_17"
+            android:textStyle="normal"
+            fontPath="@string/medium_font"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/text_app_black"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:drawablePadding="@dimen/margin_5"/>
+
+    </LinearLayout>
+</RelativeLayout>
+</RelativeLayout>

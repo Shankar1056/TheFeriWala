@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewaalwithnameprice);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Celias.otf")
+                .setDefaultFontPath("fonts/Roboto-Medium.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
@@ -49,8 +50,22 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
     }
 
     private void getData() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setTitle("");
+        TextView toolbartext = (TextView) findViewById(R.id.toolbartext);
+        toolbartext.setText("View All");
         list = getIntent().getParcelableArrayListExtra("list");
         name = getIntent().getStringExtra("name");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initWidget() {
@@ -72,6 +87,11 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
                 Toast.makeText(ViewAllWithNamePrice.this, "" + position, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(ViewAllWithNamePrice.this, ProductDescription.class).putParcelableArrayListExtra("list", list).putExtra("pos", position)
                         .putExtra("from", "viewall"));
+            }
+
+            @Override
+            public void pos(int position, String name, int count) {
+
             }
         });
         viewall_PriceName.setAdapter(adapter);

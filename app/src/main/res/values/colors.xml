@@ -8,5 +8,6 @@
     <color name="prod_name_text_color">#3F3F3F</color>
     <color name="text_light_black_color">#5F5F5F</color>
     <color name="text_app_black">#111111</color>
+    <color name="text_app_blue">#312857</color>
 
 </resources>

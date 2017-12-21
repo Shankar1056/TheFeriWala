@@ -4,14 +4,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
 
-    <string name="regular_font">fonts/celias.otf</string>
-    <string name="black_font">fonts/CeliasBlack.otf</string>
-    <string name="black_italic_font">fonts/CeliasBlackItalic.otf</string>
-    <string name="bold_font">fonts/CeliasBold.otf</string>
-    <string name="light_font">fonts/CeliasLight.otf</string>
-    <string name="medium_font">fonts/CeliasMedium.otf</string>
-    <string name="italic_font">fonts/CeliasRegularItalic.otf</string>
-    <string name="thin_font">fonts/celiasthin.otf</string>
+    <string name="bold_font">fonts/Roboto-Bold.ttf</string>
+    <string name="medium_font">fonts/Roboto-Medium.ttf</string>
+    <string name="regular_font">fonts/Roboto-Regular.ttf</string>
     <string name="todaysdeal">Todays Deal</string>
     <string name="viewall">View All</string>
     <string name="pleasewait">Please wait...</string>
@@ -26,4 +21,10 @@
     <string name="signup">Sign Up</string>
     <string name="areadyaccount">Already have an account?</string>
     <string name="login">Login</string>
+    <string name="checkout">Checkout</string>
+    <string name="hint_address">Delivery Address</string>
+    <string name="hint_locality">Locality</string>
+    <string name="hint_city">City</string>
+    <string name="hint_pincode">Pin Code</string>
+    <string name="proceedtopay">Proceed To Pay</string>
 </resources>

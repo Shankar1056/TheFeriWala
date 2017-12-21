@@ -23,6 +23,8 @@ import java.util.Arrays;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.activity.MainActivity;
+import apextechies.theferiwala.common.ClsGeneral;
+import apextechies.theferiwala.common.PreferenceHelper;
 import apextechies.theferiwala.login.LoginActivity;
 import io.fabric.sdk.android.Fabric;
 
@@ -41,14 +43,23 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.splash);
+
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
 
                 //checksession();
-                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
-                finish();
+             String a =   ClsGeneral.getPreferences(SplashScreen.this, PreferenceHelper.ID);
+                if (ClsGeneral.getPreferences(SplashScreen.this, PreferenceHelper.ID).equals(""))
+                {
+                    startActivity(new Intent(SplashScreen.this,LoginActivity.class));
+                    finish();
+                }
+                else {
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    finish();
+                }
 
             }
         }, 3000);

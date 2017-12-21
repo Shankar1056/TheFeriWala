@@ -178,6 +178,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                 .putExtra("from", "viewall"));
 
                     }
+
+                    @Override
+                    public void pos(int position, String name, int count) {
+
+                    }
                 });
                 BO_RecyclerView.setAdapter(adapter);
             }
@@ -188,6 +193,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     public void pos(int position) {
                         startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(1).getSubcategories()).putExtra("pos",position)
                                 .putExtra("from", "viewall"));
+
+                    }
+
+                    @Override
+                    public void pos(int position, String name, int count) {
 
                     }
                 });
@@ -202,6 +212,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                 .putExtra("from", "viewall"));
 
                     }
+
+                    @Override
+                    public void pos(int position, String name, int count) {
+
+                    }
                 });
                 M_RecyclerView.setAdapter(adapter);
             }
@@ -212,6 +227,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     public void pos(int position) {
                         startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(3).getSubcategories()).putExtra("pos",position)
                                 .putExtra("from", "viewall"));
+
+                    }
+
+                    @Override
+                    public void pos(int position, String name, int count) {
 
                     }
                 });
@@ -225,6 +245,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         startActivity(new Intent(getActivity(), ProductDescription.class).putExtra("list",list.get(4).getSubcategories()).putExtra("pos",position)
                                 .putExtra("from", "viewall"));
 
+
+                    }
+
+                    @Override
+                    public void pos(int position, String name, int count) {
 
                     }
                 });

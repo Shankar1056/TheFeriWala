@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class ProductListByCatId extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewaalwithnameprice);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Celias.otf")
+                .setDefaultFontPath("fonts/Roboto-Medium.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
@@ -85,13 +86,23 @@ public class ProductListByCatId extends AppCompatActivity {
                             startActivity(new Intent(ProductListByCatId.this, ProductDescription.class).putParcelableArrayListExtra("list", list).putExtra("pos", position)
                                     .putExtra("from", "main"));
                         }
+
+                        @Override
+                        public void pos(int position, String name, int count) {
+
+                        }
                     });
                     viewall_PriceName.setAdapter(adapter);
                 }
+                else
+                {
+
+                }
             }
         });
+
         nameValuePairs.add(new BasicNameValuePair("id",catId));
-        nameValuePairs.add(new BasicNameValuePair("name",catName));
+        nameValuePairs.add(new BasicNameValuePair("name",catName.replace(" ","%")));
         web.setData(nameValuePairs);
         web.setReqType("post");
         web.execute(WebServices.GETPRODUCTBYID);
@@ -108,6 +119,13 @@ public class ProductListByCatId extends AppCompatActivity {
 
         viewall_PriceName = (RecyclerView) findViewById(R.id.viewall_PriceName);
         viewall_PriceName.setLayoutManager(new GridLayoutManager(ProductListByCatId.this, 2));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

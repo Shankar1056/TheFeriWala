@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
-        fontPath="fonts/CeliasMedium.otf"
+        fontPath="@string/regular_font"
         tools:ignore="MissingPrefix"
+        android:textSize="@dimen/text_12"
+        android:textColor="@color/text_app_black"
         android:paddingBottom="10dp" />
 </LinearLayout>

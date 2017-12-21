@@ -1,5 +1,6 @@
 package apextechies.theferiwala.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +25,8 @@ import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import apextechies.theferiwala.utilz.Download_web;
 import apextechies.theferiwala.utilz.Utility;
 import apextechies.theferiwala.utilz.WebServices;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -32,19 +35,31 @@ import apextechies.theferiwala.utilz.WebServices;
 
 public class SignUp extends AppCompatActivity {
 
-    private EditText input_name,input_email,input_password,input_phone;
+    private EditText input_name, input_email, input_password, input_phone;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Roboto-regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+
         initWidgit();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     private void initWidgit() {
-        input_name = (EditText)findViewById(R.id.input_name);
-        input_email = (EditText)findViewById(R.id.input_email);
-        input_password = (EditText)findViewById(R.id.input_password);
-        input_phone = (EditText)findViewById(R.id.input_phone);
+        input_name = (EditText) findViewById(R.id.input_name);
+        input_email = (EditText) findViewById(R.id.input_email);
+        input_password = (EditText) findViewById(R.id.input_password);
+        input_phone = (EditText) findViewById(R.id.input_phone);
 
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,37 +72,30 @@ public class SignUp extends AppCompatActivity {
         findViewById(R.id.button_signup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if (input_name.getText().toString().trim().length()==0)
-               {
-                   Toast.makeText(SignUp.this, "Enter your name", Toast.LENGTH_SHORT).show();
-                   return;
-               }
-               if (input_email.getText().toString().trim().length()==0)
-               {
-                   Toast.makeText(SignUp.this, "Enter your email", Toast.LENGTH_SHORT).show();
-                   return;
-               }
-               if (!Utility.isValidEmail1(input_email.getText().toString().trim()))
-               {
-                   Toast.makeText(SignUp.this, "Enter valid email", Toast.LENGTH_SHORT).show();
-                   return;
-               }
-                if (input_password.getText().toString().trim().length()==0)
-                {
+                if (input_name.getText().toString().trim().length() == 0) {
+                    Toast.makeText(SignUp.this, "Enter your name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (input_email.getText().toString().trim().length() == 0) {
+                    Toast.makeText(SignUp.this, "Enter your email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!Utility.isValidEmail1(input_email.getText().toString().trim())) {
+                    Toast.makeText(SignUp.this, "Enter valid email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (input_password.getText().toString().trim().length() == 0) {
                     Toast.makeText(SignUp.this, "Enter your password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (input_phone.getText().toString().trim().length()==0)
-                {
+                if (input_phone.getText().toString().trim().length() == 0) {
                     Toast.makeText(SignUp.this, "Enter mobile number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (input_phone.getText().toString().trim().length()<10)
-                {
+                if (input_phone.getText().toString().trim().length() < 10) {
                     Toast.makeText(SignUp.this, "Enter 10 digits mobile number", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else {
+                } else {
                     doSignUp();
                 }
             }
@@ -95,38 +103,34 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void doSignUp() {
+        Utility.showDailog(SignUp.this, getResources().getString(R.string.pleasewait));
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
         Download_web web = new Download_web(SignUp.this, new OnTaskCompleted() {
             @Override
             public void onTaskCompleted(String response) {
-
-                if (response.length()>0)
-                {
+                Utility.closeDialog();
+                if (response.length() > 0) {
                     try {
                         JSONObject object = new JSONObject(response);
-                        if (object.getString("status").equals("true"))
-                        {
+                        if (object.getString("status").equals("true")) {
                             JSONArray array = object.getJSONArray("data");
-                            for (int i=0;i<array.length();i++)
-                            {
+                            for (int i = 0; i < array.length(); i++) {
                                 JSONObject jo = array.getJSONObject(i);
                                 String id = jo.optString("id");
                                 String email = jo.optString("email");
                                 String name = jo.optString("name");
                                 String mobile = jo.optString("mobile");
-                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.ID,id);
-                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.NAME,name);
-                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.EMAIL,email);
-                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.MOBILE,mobile);
+                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.ID, id);
+                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.NAME, name);
+                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.EMAIL, email);
+                                ClsGeneral.setPreferences(SignUp.this, PreferenceHelper.MOBILE, mobile);
                             }
                             startActivity(new Intent(SignUp.this, MainActivity.class));
                             finish();
 
 
-                        }
-                        else
-                        {
-                            Toast.makeText(SignUp.this, ""+object.getString("msg"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignUp.this, "" + object.getString("msg"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

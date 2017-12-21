@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,7 +44,9 @@
                 android:hint="@string/hint_email"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                fontPath="@string/regular_font"
+                tools:ignore="MissingPrefix"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -58,7 +61,9 @@
                 android:hint="@string/hint_password"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                fontPath="@string/regular_font"
+                tools:ignore="MissingPrefix"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -69,6 +74,8 @@
             android:gravity="center|right"
             android:textAllCaps="true"
             android:layout_marginTop="15dp"
+            fontPath="@string/regular_font"
+            tools:ignore="MissingPrefix"
             android:textColor="@color/colorPrimary"/>
 
         <Button
@@ -79,6 +86,8 @@
             android:textSize="18sp"
             android:textColor="@color/text_app_black"
             android:text="@string/login"
+            fontPath="@string/medium_font"
+            tools:ignore="MissingPrefix"
             android:layout_marginTop="20dp"/>
         <LinearLayout
             android:id="@+id/signup"
@@ -91,13 +100,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_app_black"
-                android:text="@string/donthaveaccount"/>
+                android:text="@string/donthaveaccount"
+                fontPath="@string/medium_font"
+                tools:ignore="MissingPrefix"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/signup"
                 android:textAllCaps="true"
+                fontPath="@string/regular_font"
+                tools:ignore="MissingPrefix"
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
     </LinearLayout>

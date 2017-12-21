@@ -22,7 +22,6 @@
 
 			<TextView
 				android:id="@+id/toolbartext"
-				fontPath="fonts/CeliasBold.otf"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight=".2"
@@ -30,9 +29,9 @@
 				android:textAllCaps="true"
 				android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/white"
+				android:textColor="@color/text_app_blue"
 				android:textSize="@dimen/toolbartextsize"
-				android:textStyle="bold"
+				fontPath="@string/medium_font"
 				tools:ignore="MissingPrefix" />
 
 		</LinearLayout>

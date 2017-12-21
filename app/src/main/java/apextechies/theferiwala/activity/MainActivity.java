@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Celias.otf")
+                .setDefaultFontPath("fonts/Roboto-Medium.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

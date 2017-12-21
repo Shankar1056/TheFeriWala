@@ -15,7 +15,8 @@
         android:layout_marginTop="5dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="4dp"
-        card_view:cardCornerRadius="2dp">
+        card_view:cardCornerRadius="2dp"
+        android:visibility="visible">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,8 +28,10 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/medium_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_blue"
+                android:textSize="@dimen/text_14"
                 android:text="@string/todaysdeal"/>
             <TextView
                 android:id="@+id/BO_ViewAll"
@@ -37,8 +40,10 @@
                 android:gravity="center"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/regular_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_black"
+                android:textSize="@dimen/text_12"
                 android:text="@string/viewall" />
             <View
                 android:id="@+id/Bo_view"
@@ -66,7 +71,8 @@
         android:layout_marginTop="5dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="4dp"
-        card_view:cardCornerRadius="2dp">
+        card_view:cardCornerRadius="2dp"
+        android:visibility="visible">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,8 +84,10 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/medium_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_blue"
+                android:textSize="@dimen/text_14"
                 android:text="@string/todaysdeal"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -88,8 +96,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:text="@string/viewall"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/regular_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_black"
+                android:textSize="@dimen/text_12"
                 android:id="@+id/NA_ViewAll" />
             <View
                 android:id="@+id/NA_view"
@@ -117,7 +127,8 @@
         android:layout_marginTop="5dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="4dp"
-        card_view:cardCornerRadius="2dp">
+        card_view:cardCornerRadius="2dp"
+        android:visibility="visible">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,8 +140,10 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/medium_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_blue"
+                android:textSize="@dimen/text_14"
                 android:text="@string/todaysdeal"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -139,8 +152,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:text="@string/viewall"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/regular_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_black"
+                android:textSize="@dimen/text_12"
                 android:id="@+id/M_ViewAll" />
             <View
                 android:id="@+id/M_view"
@@ -168,7 +183,8 @@
         android:layout_marginTop="5dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="4dp"
-        card_view:cardCornerRadius="2dp">
+        card_view:cardCornerRadius="2dp"
+        android:visibility="visible">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,8 +196,10 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/medium_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_blue"
+                android:textSize="@dimen/text_14"
                 android:text="@string/todaysdeal"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -189,8 +207,10 @@
                 android:gravity="center"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/regular_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_black"
+                android:textSize="@dimen/text_12"
                 android:text="@string/viewall"
                 android:id="@+id/TD_ViewAll" />
             <View
@@ -232,8 +252,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentLeft="true"
                 android:text="@string/todaysdeal"
-                fontPath="fonts/CeliasMedium.otf"
-                tools:ignore="MissingPrefix"/>
+                fontPath="@string/medium_font"
+                tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_blue"
+                android:textSize="@dimen/text_14"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -241,8 +263,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:text="@string/viewall"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/regular_font"
                 tools:ignore="MissingPrefix"
+                android:textColor="@color/text_app_black"
+                android:textSize="@dimen/text_12"
                 android:id="@+id/TP_ViewAll" />
             <View
                 android:id="@+id/TP_view"

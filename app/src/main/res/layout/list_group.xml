@@ -15,9 +15,10 @@
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:paddingTop="10dp"
         android:text="feedad"
-        fontPath="fonts/CeliasMedium.otf"
+        fontPath="@string/medium_font"
         tools:ignore="MissingPrefix"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/text_app_blue"
+        android:textSize="@dimen/text_14"/>
 
     <LinearLayout
         android:layout_width="match_parent"

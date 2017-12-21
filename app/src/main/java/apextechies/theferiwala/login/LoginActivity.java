@@ -1,5 +1,6 @@
 package apextechies.theferiwala.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +25,8 @@ import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import apextechies.theferiwala.utilz.Download_web;
 import apextechies.theferiwala.utilz.Utility;
 import apextechies.theferiwala.utilz.WebServices;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -31,21 +34,33 @@ import apextechies.theferiwala.utilz.WebServices;
  */
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText input_email,input_password;
+    private EditText input_email, input_password;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Roboto-regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+
         initWidgit();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     private void initWidgit() {
-        input_email = (EditText)findViewById(R.id.input_email);
-        input_password = (EditText)findViewById(R.id.input_password);
+        input_email = (EditText) findViewById(R.id.input_email);
+        input_password = (EditText) findViewById(R.id.input_password);
         findViewById(R.id.signup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignUp.class));
+                startActivity(new Intent(LoginActivity.this, SignUp.class));
                 finish();
             }
         });
@@ -54,23 +69,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (input_email.getText().toString().trim().length()==0)
-                {
+                if (input_email.getText().toString().trim().length() == 0) {
                     Toast.makeText(LoginActivity.this, "Enter your email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!Utility.isValidEmail1(input_email.getText().toString().trim()))
-                {
+                if (!Utility.isValidEmail1(input_email.getText().toString().trim())) {
                     Toast.makeText(LoginActivity.this, "Enter valid email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (input_password.getText().toString().trim().length()==0)
-                {
+                if (input_password.getText().toString().trim().length() == 0) {
                     Toast.makeText(LoginActivity.this, "Enter your password", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else
-                {
+                } else {
                     doSignUp();
                 }
             }
@@ -78,38 +88,34 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void doSignUp() {
+        Utility.showDailog(LoginActivity.this, getResources().getString(R.string.pleasewait));
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
         Download_web web = new Download_web(LoginActivity.this, new OnTaskCompleted() {
             @Override
             public void onTaskCompleted(String response) {
-
-                if (response.length()>0)
-                {
+                Utility.closeDialog();
+                if (response.length() > 0) {
                     try {
                         JSONObject object = new JSONObject(response);
-                        if (object.getString("status").equals("true"))
-                        {
+                        if (object.getString("status").equals("true")) {
                             JSONArray array = object.getJSONArray("data");
-                            for (int i=0;i<array.length();i++)
-                            {
+                            for (int i = 0; i < array.length(); i++) {
                                 JSONObject jo = array.getJSONObject(i);
                                 String id = jo.optString("id");
                                 String email = jo.optString("email");
                                 String name = jo.optString("name");
                                 String mobile = jo.optString("mobile");
-                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.ID,id);
-                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.NAME,name);
-                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.EMAIL,email);
-                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.MOBILE,mobile);
+                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.ID, id);
+                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.NAME, name);
+                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.EMAIL, email);
+                                ClsGeneral.setPreferences(LoginActivity.this, PreferenceHelper.MOBILE, mobile);
                             }
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
 
 
-                        }
-                        else
-                        {
-                            Toast.makeText(LoginActivity.this, ""+object.getString("msg"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "" + object.getString("msg"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
