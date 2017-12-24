@@ -41,19 +41,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/input_locality"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_locality"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    fontPath="@string/regular_font"
-                    tools:ignore="MissingPrefix"/>
-            </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_password"
                 android:layout_width="match_parent"
@@ -70,7 +58,19 @@
                     tools:ignore="MissingPrefix"/>
 
             </android.support.design.widget.TextInputLayout>
-
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/input_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_state"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    fontPath="@string/regular_font"
+                    tools:ignore="MissingPrefix"/>
+            </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
