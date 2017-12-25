@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
@@ -105,7 +106,7 @@ public class MyOrder extends AppCompatActivity {
                                     ArrayList<MyOrderModel> lst = new ArrayList<>();
                                     for (int i=0;i<modellist.size();i++)
                                     {
-                                        if (modellist.get(i).getOid().equals(list.get(i).getOid()))
+                                        if (modellist.get(i).getOid().equals(list.get(position).getOid()))
                                         {
                                             MyOrderModel a = modellist.get(i);
                                             lst.add(new MyOrderModel(a.getId(),a.getSellerid(),a.getPayment_mode(),a.getPayment_status(),a.getOid(),
@@ -166,5 +167,11 @@ public class MyOrder extends AppCompatActivity {
         toolbartext.setText("My Order");
         rv_myOrder = (RecyclerView) findViewById(R.id.rv_myOrder);
         rv_myOrder.setLayoutManager(new LinearLayoutManager(MyOrder.this));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

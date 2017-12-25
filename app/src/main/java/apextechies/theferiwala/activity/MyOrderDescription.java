@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class MyOrderDescription extends AppCompatActivity {
 
             }
         });
-
+        rv_myorderdesc.setAdapter(adapter);
     }
 
     private void initWidgit() {
@@ -81,5 +82,11 @@ public class MyOrderDescription extends AppCompatActivity {
         orderDate = (TextView)findViewById(R.id.orderDate);
         rv_myorderdesc = (RecyclerView) findViewById(R.id.rv_myorderdesc);
         rv_myorderdesc.setLayoutManager(new LinearLayoutManager(MyOrderDescription.this));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
