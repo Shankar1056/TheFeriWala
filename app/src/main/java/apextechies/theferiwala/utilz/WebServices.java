@@ -17,6 +17,7 @@ public class WebServices {
 	public static final String GETCARTCOUNT = BASE_URL+"get_cartcount";
 	public static final String UPDATEADDRESS = BASE_URL+"update_address";
 	public static final String UPDATEMYORDER = BASE_URL+"update_myorder";
+	public static final String PLACEORDER = BASE_URL+"place_order";
 
 	
 	

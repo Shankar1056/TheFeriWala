@@ -27,7 +27,7 @@
                 android:id="@+id/productName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                fontPath="fonts/CeliasMedium.otf"
+                fontPath="@string/medium_font"
                 tools:ignore="MissingPrefix"
                 android:layout_marginTop="5dp" />
             <LinearLayout
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:drawableLeft="@mipmap/black_rup"
-                    fontPath="fonts/CeliasMedium.otf"
+                    fontPath="@string/medium_font"
                     tools:ignore="MissingPrefix"
                     android:text="250"/>
                 <TextView
@@ -51,7 +51,7 @@
                     android:textSize="13sp"
                     android:layout_marginLeft="10dp"
                     android:drawableLeft="@mipmap/black_rup"
-                    fontPath="fonts/CeliasMedium.otf"
+                    fontPath="@string/medium_font"
                     tools:ignore="MissingPrefix"
                     android:text="250"/>
             </LinearLayout>
