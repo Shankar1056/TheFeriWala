@@ -55,14 +55,14 @@
                     tools:ignore="MissingPrefix"
                     android:text="Subtotal"/>
                 <TextView
+                    android:id="@+id/subtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:textSize="@dimen/text_14"
                     android:textColor="@color/text_app_blue"
                     fontPath="@string/medium_font"
-                    tools:ignore="MissingPrefix"
-                    android:text="₹ 652"/>
+                    tools:ignore="MissingPrefix"/>
             </RelativeLayout>
 
         </LinearLayout>
@@ -84,14 +84,14 @@
             tools:ignore="MissingPrefix"
             android:text="Total Payable"/>
         <TextView
+            android:id="@+id/totalpayable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:textSize="@dimen/text_14"
             android:textColor="@color/text_app_blue"
             fontPath="@string/bold_font"
-            tools:ignore="MissingPrefix"
-            android:text="₹ 652"/>
+            tools:ignore="MissingPrefix"/>
     </RelativeLayout>
 
     <android.support.v7.widget.CardView

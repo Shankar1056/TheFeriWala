@@ -126,6 +126,12 @@ public class ProductListByCatId extends AppCompatActivity {
                 finish();
             }
         });
+        findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductListByCatId.this, MyCart.class));
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

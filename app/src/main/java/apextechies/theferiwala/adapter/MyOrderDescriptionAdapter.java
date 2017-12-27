@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
+import apextechies.theferiwala.common.PreferenceHelper;
 import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.model.MyOrderModel;
 
@@ -44,7 +45,7 @@ public class MyOrderDescriptionAdapter extends RecyclerView.Adapter<MyOrderDescr
 
 
       //  Picasso.with(context).load(imageList.get(position).getProd_image()).into(holder.prodImage);
-        holder.prodName.setText(imageList.get(position).getProduct_name());
+        holder.prodName.setText(PreferenceHelper.IMAGE_URL+imageList.get(position).getProduct_name());
         holder.prodQuantity.setText("Qty : "+imageList.get(position).getQuantity());
         holder.prodPrice.setText("Amount : "+imageList.get(position).getProduct_price());
         holder.orderStatus.setText(imageList.get(position).getDelivery_status());

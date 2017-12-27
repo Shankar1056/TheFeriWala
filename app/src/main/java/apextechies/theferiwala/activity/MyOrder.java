@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
@@ -18,9 +19,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import apextechies.theferiwala.R;
 import apextechies.theferiwala.adapter.MyOrderAdapter;
+import apextechies.theferiwala.common.ClsGeneral;
+import apextechies.theferiwala.common.PreferenceHelper;
 import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.interfaces.OnTaskCompleted;
 import apextechies.theferiwala.model.MyOrderModel;
@@ -61,6 +66,7 @@ public class MyOrder extends AppCompatActivity {
 
 
     private void callApi() {
+        final Set<MyOrderModel> set = new HashSet<MyOrderModel>();
         Utility.showDailog(MyOrder.this, getResources().getString(R.string.pleasewait));
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
         Download_web web = new Download_web(MyOrder.this, new OnTaskCompleted() {
@@ -93,13 +99,15 @@ public class MyOrder extends AppCompatActivity {
 
                                 modellist.add(new MyOrderModel(id, sellerid, payment_mode, payment_status, oid,  login_id, quantity,
                                         product_name, product_price, prod_image,date, time, delivery_status));
+                              list.add(new MyOrderModel(id, sellerid, payment_mode, payment_status, oid, login_id, quantity,
+                                        product_name, product_price, prod_image, date, time, delivery_status));
 
-                                setAnotherList(id, sellerid, payment_mode, payment_status, oid,  login_id, quantity,
-                                        product_name, product_price, prod_image, date, time, delivery_status);
+                               /* setAnotherList(id, sellerid, payment_mode, payment_status, oid,  login_id, quantity,
+                                        product_name, product_price, prod_image, date, time, delivery_status);*/
 
                             }
 
-
+                            setAnotherList(list);
                             MyOrderAdapter adapter = new MyOrderAdapter(MyOrder.this, list, new ClickPosition() {
                                 @Override
                                 public void pos(int position) {
@@ -133,11 +141,25 @@ public class MyOrder extends AppCompatActivity {
 
             }
         });
-        // nameValuePairs.add(new BasicNameValuePair("userId", ClsGeneral.getPreferences(MyOrder.this, PreferenceHelper.ID)));
-        nameValuePairs.add(new BasicNameValuePair("userId", "63"));
+         nameValuePairs.add(new BasicNameValuePair("userId", ClsGeneral.getPreferences(MyOrder.this, PreferenceHelper.ID)));
+       // nameValuePairs.add(new BasicNameValuePair("userId", "63"));
         web.setData(nameValuePairs);
         web.setReqType("post");
         web.execute(WebServices.UPDATEMYORDER);
+    }
+
+    private synchronized void setAnotherList(ArrayList<MyOrderModel> list) {
+
+        for(int i=0;i<list.size();i++){
+
+            for(int j=i+1;j<list.size();j++){
+                if(list.get(i).getOid().equals(list.get(j).getOid())){
+                    list.remove(j);
+                    j--;
+                }
+            }
+
+        }
     }
 
     private void setAnotherList(String id, String sellerid, String payment_mode, String payment_status, String oid,  String login_id, String quantity, String product_name, String product_price, String prod_image, String date, String time, String delivery_status) {
@@ -151,6 +173,7 @@ public class MyOrder extends AppCompatActivity {
                     list.add(new MyOrderModel(id, sellerid, payment_mode, payment_status, oid,  login_id, quantity,
                             product_name, product_price, prod_image,date, time, delivery_status));
                 }
+                return;
             }
 
         }
@@ -167,11 +190,22 @@ public class MyOrder extends AppCompatActivity {
         toolbartext.setText("My Order");
         rv_myOrder = (RecyclerView) findViewById(R.id.rv_myOrder);
         rv_myOrder.setLayoutManager(new LinearLayoutManager(MyOrder.this));
+        LinearLayout cartLayout = (LinearLayout)findViewById(R.id.cartLayout);
+        cartLayout.setVisibility(View.INVISIBLE);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MyOrder.this,MainActivity.class));
                 finish();
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MyOrder.this,MainActivity.class));
+        finish();
     }
 }

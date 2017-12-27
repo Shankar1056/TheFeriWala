@@ -171,6 +171,12 @@ public class ProductDescription extends AppCompatActivity implements View.OnClic
                 finish();
             }
         });
+        findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductDescription.this, MyCart.class));
+            }
+        });
     }
 
     @Override

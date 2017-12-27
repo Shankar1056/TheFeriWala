@@ -42,6 +42,7 @@ public class MyCart extends AppCompatActivity {
     private ArrayList<MyCartModel> list = new ArrayList<>();
     private  MyCartAdapter myCartAdapter;
     private RelativeLayout botomlayout;
+    private  TextView amount;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -145,7 +146,7 @@ public class MyCart extends AppCompatActivity {
             }
         }
 
-        TextView amount = (TextView)findViewById(R.id.amount);
+
         amount.setText(""+price);
     }
 
@@ -217,10 +218,11 @@ public class MyCart extends AppCompatActivity {
         rv_mycart = (RecyclerView) findViewById(R.id.rv_mycart);
         rv_mycart.setLayoutManager(new LinearLayoutManager(MyCart.this));
         botomlayout = (RelativeLayout) findViewById(R.id.botomlayout);
+        amount = (TextView)findViewById(R.id.amount);
         findViewById(R.id.proceedtopay).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MyCart.this, AddAddress.class));
+                startActivity(new Intent(MyCart.this, AddAddress.class).putExtra("price",amount.getText().toString()));
             }
         });
 

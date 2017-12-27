@@ -96,7 +96,12 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         });
         viewall_PriceName.setAdapter(adapter);
 
-
+        findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewAllWithNamePrice.this, MyCart.class));
+            }
+        });
     }
 
     @Override

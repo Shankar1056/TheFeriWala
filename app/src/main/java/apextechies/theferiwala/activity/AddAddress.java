@@ -1,6 +1,7 @@
 package apextechies.theferiwala.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddAddress extends AppCompatActivity {
     private EditText input_address,input_state,input_city,input_pincode;
+    private String price;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,19 @@ public class AddAddress extends AppCompatActivity {
         );
 
         initWidgit();
+        getData();
     }
+
+    private void getData() {
+        try {
+            price = getIntent().getStringExtra("price");
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
     private void initWidgit() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,6 +85,7 @@ public class AddAddress extends AppCompatActivity {
                 finish();
             }
         });
+
 
     }
 
@@ -115,7 +130,8 @@ public class AddAddress extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     if (object.optString("status").equals("true"))
                     {
-                        Toast.makeText(AddAddress.this, ""+object.optString("msg"), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(AddAddress.this, ""+object.optString("msg"), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AddAddress.this,PaymentActivity.class).putExtra("price",price));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -28,4 +28,6 @@
     <string name="hint_pincode">Pin Code</string>
     <string name="proceedtopay">Proceed To Pay</string>
     <string name="hint_state">State</string>
+    <string name="tanksmessae">Thanks for Ordering \n we have received your order</string>
+    <string name="myorder">Go to my order</string>
 </resources>
