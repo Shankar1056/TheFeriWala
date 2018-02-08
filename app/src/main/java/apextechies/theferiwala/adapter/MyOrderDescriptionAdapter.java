@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
@@ -43,9 +45,10 @@ public class MyOrderDescriptionAdapter extends RecyclerView.Adapter<MyOrderDescr
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-
-      //  Picasso.with(context).load(imageList.get(position).getProd_image()).into(holder.prodImage);
-        holder.prodName.setText(PreferenceHelper.IMAGE_URL+imageList.get(position).getProduct_name());
+if (imageList.get(position).getProd_image()!=null && imageList.get(position).getProd_image().length()>0) {
+    Picasso.with(context).load(PreferenceHelper.IMAGE_URL+imageList.get(position).getProd_image()).into(holder.prodImage);
+}
+        holder.prodName.setText(imageList.get(position).getProduct_name());
         holder.prodQuantity.setText("Qty : "+imageList.get(position).getQuantity());
         holder.prodPrice.setText("Amount : "+imageList.get(position).getProduct_price());
         holder.orderStatus.setText(imageList.get(position).getDelivery_status());
