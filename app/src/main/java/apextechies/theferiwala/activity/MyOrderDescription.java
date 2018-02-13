@@ -51,9 +51,9 @@ public class MyOrderDescription extends AppCompatActivity {
         list = getIntent().getParcelableArrayListExtra("list");
         pos = getIntent().getIntExtra("pos",0);
 
-        orderId.setText("Order id: "+list.get(pos).getOid());
-        orderStatus.setText("Status "+list.get(pos).getDelivery_status());
-        orderDate.setText("Order date: "+list.get(pos).getDate());
+        orderId.setText("Order id: "+list.get(0).getOid());
+        orderStatus.setText("Status "+list.get(0).getDelivery_status());
+        orderDate.setText("Order date: "+list.get(0).getDate());
 
         MyOrderDescriptionAdapter adapter = new MyOrderDescriptionAdapter(MyOrderDescription.this, list, new ClickPosition() {
             @Override

@@ -122,7 +122,7 @@ public class MyOrder extends AppCompatActivity {
                                                     a.getTime(),a.getDelivery_status()));
                                         }
                                     }
-                                    startActivity(new Intent(MyOrder.this, MyOrderDescription.class).putParcelableArrayListExtra("list", lst).putExtra("pos", position));
+                                    startActivity(new Intent(MyOrder.this, MyOrderDescription.class).putParcelableArrayListExtra("list", lst).putExtra("pos", 0));
                                 }
 
                                 @Override
