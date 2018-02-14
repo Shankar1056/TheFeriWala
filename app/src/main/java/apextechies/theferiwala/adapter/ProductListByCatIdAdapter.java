@@ -51,6 +51,11 @@ public class ProductListByCatIdAdapter extends RecyclerView.Adapter<ProductListB
         holder.oldprice.setText(imageList.get(position).getPrice());
         holder.currentprice.setText(imageList.get(position).getDis_price());
         holder.productName.setText(imageList.get(position).getPname());
+        if (imageList.get(position).getSellerid().equalsIgnoreCase("0")){
+
+        }else {
+            holder.sellerName.setVisibility(View.VISIBLE);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +74,7 @@ public class ProductListByCatIdAdapter extends RecyclerView.Adapter<ProductListB
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView image;
-        private TextView oldprice,currentprice,productName;
+        private TextView oldprice,currentprice,productName,sellerName;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +82,7 @@ public class ProductListByCatIdAdapter extends RecyclerView.Adapter<ProductListB
             oldprice =(TextView) itemView.findViewById(R.id.oldprice);
             currentprice =(TextView) itemView.findViewById(R.id.currentprice);
             productName =(TextView) itemView.findViewById(R.id.productName);
+            sellerName =(TextView) itemView.findViewById(R.id.sellerName);
             oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         }

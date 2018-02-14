@@ -14,6 +14,7 @@
     <string name="gotocart">Go to cart</string>
     <string name="hint_email">Enter Email Id</string>
     <string name="hint_password">Enter password</string>
+    <string name="hint_newpassword">Enter new password</string>
     <string name="hint_name">Name</string>
     <string name="hint_phone">Enter Phone number</string>
     <string name="forgotpassword">Forgot Password?</string>
@@ -21,6 +22,7 @@
     <string name="signup">Sign Up</string>
     <string name="areadyaccount">Already have an account?</string>
     <string name="login">Login</string>
+    <string name="resetpswd">Reset Password</string>
     <string name="checkout">Checkout</string>
     <string name="hint_address">Delivery Address</string>
     <string name="hint_locality">Locality</string>
@@ -30,4 +32,5 @@
     <string name="hint_state">State</string>
     <string name="tanksmessae">Thanks for Ordering \n we have received your order</string>
     <string name="myorder">Go to my order</string>
+    <string name="searchproduct">Search Product</string>
 </resources>

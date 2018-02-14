@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -35,6 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText input_email, input_password;
+    private TextView forotpassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initWidgit() {
+        forotpassword = (TextView)findViewById(R.id.forotpassword);
         input_email = (EditText) findViewById(R.id.input_email);
         input_password = (EditText) findViewById(R.id.input_password);
         findViewById(R.id.signup).setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotPassword.class));
+            }
+        });
         findViewById(R.id.text_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

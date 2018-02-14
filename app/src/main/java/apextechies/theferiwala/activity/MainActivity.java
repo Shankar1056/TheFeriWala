@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private HashMap<String, List<String>> expandableListDetail;
     ArrayList<SubCategoryModel> list = new ArrayList<>();
     private CategorySubCategoryModel catSubCatModel;
+    private ImageView search_icon;
 
 
     @Override
@@ -90,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initWidgit() {
 
+        search_icon = (ImageView)findViewById(R.id.search_icon);
+        search_icon.setVisibility(View.VISIBLE);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
         findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
         // getTodaysDeal();
         gotoHomeFragment();
+
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            }
+        });
     }
 
     private void gotoHomeFragment() {

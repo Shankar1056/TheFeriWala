@@ -18,6 +18,8 @@ public class WebServices {
 	public static final String UPDATEADDRESS = BASE_URL+"update_address";
 	public static final String UPDATEMYORDER = BASE_URL+"update_myorder";
 	public static final String PLACEORDER = BASE_URL+"place_order";
+	public static final String SEARCPRODUCT = BASE_URL+"search_product";
+	public static final String FOROTPASSWORD = BASE_URL+"forgot_password";
 
 	
 	
