@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<SubCategoryModel> list = new ArrayList<>();
     private CategorySubCategoryModel catSubCatModel;
     private ImageView search_icon;
+    private TextView username;
+    private TextView useremail;
+    private RelativeLayout profile;
+    private TextView logout;
 
 
     @Override
@@ -67,7 +72,13 @@ public class MainActivity extends AppCompatActivity {
         );
         navigationMapping();
         initWidgit();
+        setText();
 
+    }
+
+    private void setText() {
+        username.setText(ClsGeneral.getPreferences(MainActivity.this, PreferenceHelper.NAME));
+        useremail.setText(ClsGeneral.getPreferences(MainActivity.this, PreferenceHelper.EMAIL));
     }
 
     @Override
@@ -95,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
         search_icon = (ImageView)findViewById(R.id.search_icon);
         search_icon.setVisibility(View.VISIBLE);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        username = (TextView)findViewById(R.id.username);
+        useremail = (TextView)findViewById(R.id.useremail);
+        profile = (RelativeLayout)findViewById(R.id.profile);
+        logout = (TextView)findViewById(R.id.logout);
         findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +127,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClsGeneral.setPreferences(MainActivity.this, PreferenceHelper.ID,"");
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finishAffinity();
             }
         });
     }
@@ -158,10 +188,17 @@ public class MainActivity extends AppCompatActivity {
                                 childPosition), Toast.LENGTH_SHORT
                 ).show();*/
 
-                String subcatid = catSubCatModel.getData().get(groupPosition).getSubcategories().get(childPosition).getSubcid();
-                String subcatname = catSubCatModel.getData().get(groupPosition).getSubcategories().get(childPosition).getSubcname();
+                String subcatid=null, subcatname=null;
+                try {
+                   subcatid = catSubCatModel.getData().get(groupPosition).getSubcategories().get(childPosition).getSubcid();
+                   subcatname = catSubCatModel.getData().get(groupPosition).getSubcategories().get(childPosition).getSubcname();
+                    startActivity(new Intent(MainActivity.this, ProductListByCatId.class).putExtra("id", subcatid).putExtra("name", subcatname));
+
+                }
+               catch (Exception e){
+                   e.printStackTrace();
+               }
                 //Toast.makeText(MainActivity.this, "" + subcatid, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, ProductListByCatId.class).putExtra("id", subcatid).putExtra("name", subcatname));
 
 
                 return false;

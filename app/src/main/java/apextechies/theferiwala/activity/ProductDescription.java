@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -119,8 +120,8 @@ public class ProductDescription extends AppCompatActivity implements View.OnClic
             productname.setText(mainlist.get(position).getPname());
             productdetails.setText(mainlist.get(position).getDetail());
             amount.setText(mainlist.get(position).getDis_price());
-            specification.setText(mainlist.get(position).getSpecification());
-            desc.setText(mainlist.get(position).getDetail());
+            specification.setText(Html.fromHtml(mainlist.get(position).getSpecification()));
+            desc.setText(Html.fromHtml(mainlist.get(position).getDetail()));
         } else if (from.equals("viewall")) {
             TextView toolbartext = (TextView) findViewById(R.id.toolbartext);
             toolbartext.setText(viewalllist.get(position).getPname());
@@ -129,8 +130,8 @@ public class ProductDescription extends AppCompatActivity implements View.OnClic
             productname.setText(viewalllist.get(position).getPname());
             productdetails.setText(viewalllist.get(position).getDetail());
             amount.setText(viewalllist.get(position).getDis_price());
-            specification.setText(viewalllist.get(position).getSpecification());
-            desc.setText(viewalllist.get(position).getDetail());
+            specification.setText(Html.fromHtml(viewalllist.get(position).getSpecification()));
+            desc.setText(Html.fromHtml(viewalllist.get(position).getDetail()));
         }
 
     }

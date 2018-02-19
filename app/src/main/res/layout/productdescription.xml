@@ -26,15 +26,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:paddingBottom="@dimen/margin_50">
 
 
 
                    <ImageView
                        android:id="@+id/prodImage"
-                       android:layout_width="match_parent"
-                       android:layout_height="200dp"
-                       android:scaleType="fitXY"/>
+                       android:layout_width="wrap_content"
+                       android:layout_height="200dp"/>
 
 
                     <View
