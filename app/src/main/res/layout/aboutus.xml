@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toptool"
+        layout="@layout/toolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/prod_name_text_color"
+        android:layout_margin="@dimen/margin_10"
+        android:text="At Theferiwala, our vision is to be counted amongst the most consumer friendly companies of the world; we aim to build a place where people can come and discover virtually anything they want to buy online. We endeavor to build a common platform that caters to the diverse wants of the customers. The customers can reap the benefits of a vast range of products, low prices, fast and reliable delivery, and a trusted and convenient online shopping experience.
+
+We provide sellers a world-class e-commerce platform. We are committed to ensure 100% Purchase Protection for the shopping done on theferiwala.com so that our users can benefit from a safe and secure online ordering experience, convenient payment options such as cash on delivery, easy returns and enjoy a completely hassle free online shopping experience.
+
+
+theferiwala provide various famous products under different categories. Customers can now buy popular products from city across categories such as Clothing, Leathers, Sweets, Footware and many more at theferiwala.com. We also offer exclusive deals at the theferiwala Exclusives Store which helps our customers to save on their purchases every day.
+
+
+With theferiwala, we strive to make the experience of shopping extremely handy. The theferiwala App for all plateform enables the customers to enjoy a convenient, fast and secure way to search, browse, compare offers, and shop online quickly and easily, at anytime from anywhere.
+
+We relentlessly direct our focus upon technology and innovation to transform the lives of our customers and all our partners. We strive to transform the way India shops and the way India sells."/>
+</LinearLayout>

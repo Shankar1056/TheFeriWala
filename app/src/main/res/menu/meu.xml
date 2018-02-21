@@ -12,6 +12,27 @@
         android:title="Trak Order"
         app:showAsAction="never" />
     <item
+        android:id="@+id/aboutus"
+        android:orderInCategory="100"
+        android:title="About Us"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/contactus"
+        android:orderInCategory="100"
+        android:title="Contact Us"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/termscondition"
+        android:orderInCategory="100"
+        android:title="Terms &amp; Conditions"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/policy"
+        android:orderInCategory="100"
+        android:title="Privacy &amp; Policy"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/logout"
         android:orderInCategory="100"
         android:title="Logout"

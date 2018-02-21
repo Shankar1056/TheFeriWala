@@ -47,6 +47,10 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".login.ForgotPassword"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.AboutUs"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.ContactUs"
+            android:theme="@style/AppTheme.NoActionBar"/>
        <!-- <meta-data
             android:name="io.fabric.ApiKey"
             android:value="185cd65e35579c876af0ada8ca5fcc40ac8cded2" />-->
@@ -58,6 +62,9 @@
             tools:replace="android:value"/>
 
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/maps_api_key" />
     </application>
 
 </manifest>

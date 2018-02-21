@@ -3,6 +3,7 @@ package apextechies.theferiwala.activity;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -280,6 +281,35 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.myorder) {
             startActivity(new Intent(MainActivity.this, MyOrder.class));
             finish();
+            return true;
+        }
+        if (id == R.id.trackorder) {
+            String url = " http://theferiwala.com/sign-in.php";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+            return true;
+        }
+        if (id == R.id.aboutus) {
+            startActivity(new Intent(MainActivity.this, AboutUs.class));
+            return true;
+        }
+        if (id == R.id.contactus) {
+            startActivity(new Intent(MainActivity.this, ContactUs.class));
+            return true;
+        }
+        if (id == R.id.termscondition) {
+            String url = "http://theferiwala.com/term.php";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+            return true;
+        }
+        if (id == R.id.policy) {
+            String url = "http://theferiwala.com/privacy.php";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
             return true;
         }
         if (id == R.id.logout) {

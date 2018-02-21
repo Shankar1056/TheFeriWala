@@ -33,4 +33,8 @@
     <string name="tanksmessae">Thanks for Ordering \n we have received your order</string>
     <string name="myorder">Go to my order</string>
     <string name="searchproduct">Search Product</string>
+    <string name="maps_api_key">AIzaSyDSGXRIo3zpPVkxznY3V1a_tm3jPrNsVdA</string>
+    <string name="text_contact_address">Contact Address</string>
+    <string name="text_contact_mobile">Mobile</string>
+    <string name="text_contact_email">Email</string>
 </resources>
