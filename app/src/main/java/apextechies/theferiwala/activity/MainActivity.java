@@ -43,7 +43,6 @@ import apextechies.theferiwala.model.SubCategoryModel;
 import apextechies.theferiwala.utilz.Download_web;
 import apextechies.theferiwala.utilz.WebServices;
 import io.fabric.sdk.android.Fabric;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,11 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Roboto-Medium.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
+       
         navigationMapping();
         initWidgit();
         setText();
@@ -284,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.trackorder) {
-            String url = " http://theferiwala.com/sign-in.php";
+            String url = "http://theferiwala.com/sign-in.php";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);

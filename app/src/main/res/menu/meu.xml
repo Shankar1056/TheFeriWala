@@ -9,7 +9,7 @@
     <item
         android:id="@+id/trackorder"
         android:orderInCategory="100"
-        android:title="Trak Order"
+        android:title="Track Order"
         app:showAsAction="never" />
     <item
         android:id="@+id/aboutus"

@@ -1,6 +1,5 @@
 package apextechies.theferiwala.adapter;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import apextechies.theferiwala.R;
+import apextechies.theferiwala.activity.ViewAllWithNamePrice;
 import apextechies.theferiwala.common.PreferenceHelper;
 import apextechies.theferiwala.interfaces.ClickPosition;
 import apextechies.theferiwala.model.ViewAllSubCat;
@@ -24,11 +24,11 @@ import apextechies.theferiwala.model.ViewAllSubCat;
 
 public class ViewAllPriceNameAdapter extends RecyclerView.Adapter<ViewAllPriceNameAdapter.ViewHolder> {
 
-    private Context context;
+    private ViewAllWithNamePrice context;
     private ArrayList<ViewAllSubCat> imageList;
     private ClickPosition clickPosition;
 
-    public ViewAllPriceNameAdapter(Context context, ArrayList<ViewAllSubCat> imageList, ClickPosition clickPosition) {
+    public ViewAllPriceNameAdapter(ViewAllWithNamePrice context, ArrayList<ViewAllSubCat> imageList, ClickPosition clickPosition) {
         this.context = context;
         this.imageList = imageList;
         this.clickPosition = clickPosition;
@@ -46,8 +46,9 @@ public class ViewAllPriceNameAdapter extends RecyclerView.Adapter<ViewAllPriceNa
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-
-        Picasso.with(context).load(PreferenceHelper.IMAGE_URL+imageList.get(position).getImage()).into(holder.image);
+       // Glide.with(context).load(c.getImage()).into(holder.image);
+        String q=PreferenceHelper.IMAGE_URL+imageList.get(position).getImage();
+        Picasso.with(context).load(q).into(holder.image);
         holder.oldprice.setText(imageList.get(position).getPrice());
         holder.currentprice.setText(imageList.get(position).getDis_price());
         holder.productName.setText(imageList.get(position).getPname());

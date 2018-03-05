@@ -35,8 +35,7 @@
 				android:textColor="@color/text_app_blue"
 				android:textSize="@dimen/toolbartextsize"
 				android:layout_toLeftOf="@+id/search_icon"
-				fontPath="@string/medium_font"
-				tools:ignore="MissingPrefix" />
+				/>
 				<ImageView
 					android:id="@+id/search_icon"
 					android:layout_width="wrap_content"

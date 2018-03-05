@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,12 +59,8 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         list = getIntent().getParcelableArrayListExtra("list");
         name = getIntent().getStringExtra("name");
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+
     }
 
     private void initWidget() {
@@ -78,7 +73,6 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         toolbartext.setText(name);
 
         viewall_PriceName = (RecyclerView) findViewById(R.id.viewall_PriceName);
-        viewall_PriceName.setHasFixedSize(true);
         viewall_PriceName.setLayoutManager(new GridLayoutManager(ViewAllWithNamePrice.this, 2));
 
         ViewAllPriceNameAdapter adapter = new ViewAllPriceNameAdapter(ViewAllWithNamePrice.this, list, new ClickPosition() {
@@ -96,6 +90,12 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         });
         viewall_PriceName.setAdapter(adapter);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         findViewById(R.id.cartLayout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +104,7 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
         });
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -115,5 +115,5 @@ public class ViewAllWithNamePrice extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 }

@@ -98,23 +98,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         TP_ViewAll = (TextView)view.findViewById(R.id.TP_ViewAll);
 
         BO_RecyclerView = (RecyclerView)view.findViewById(R.id.BO_RecyclerView);
-        BO_RecyclerView.setHasFixedSize(true);
+        BO_RecyclerView.setNestedScrollingEnabled(false);
         BO_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         NA_RecyclerView = (RecyclerView)view.findViewById(R.id.NA_RecyclerView);
-        NA_RecyclerView.setHasFixedSize(true);
+        NA_RecyclerView.setNestedScrollingEnabled(false);
         NA_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         M_RecyclerView = (RecyclerView)view.findViewById(R.id.M_RecyclerView);
-        M_RecyclerView.setHasFixedSize(true);
+        M_RecyclerView.setNestedScrollingEnabled(false);
         M_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         TD_RecyclerView = (RecyclerView)view.findViewById(R.id.TD_RecyclerView);
-        TD_RecyclerView.setHasFixedSize(true);
+        TD_RecyclerView.setNestedScrollingEnabled(false);
         TD_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         TP_RecyclerView = (RecyclerView)view.findViewById(R.id.TP_RecyclerView);
-        TP_RecyclerView.setHasFixedSize(true);
+        TP_RecyclerView.setNestedScrollingEnabled(false);
         TP_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
     }
